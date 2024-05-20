@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>   
+<html lang="en">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+{% if user.is_authenticated and user.is_staff %}
+<body>
+    <div class="back">
+        <a href="/" >Home</a>
+    </div>
+    <div class="container">
+        <h1>Add Student</h1>
+        <form action="{% url 'addplan' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_image">Image</label>
+                <input type="image" name="image" id="id_mage" placeholder="Image" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_price">Price</label>
+                <input type="Price" name="Price" id="Price" placeholder="Price" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_description">description</label>
+                <input type="text" name="t" id="id_description" class="form-control" placeholder="" required>
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary">
+            <a href="/" class="btn btn-primary">Back</a>
+            
+        </form>
+        
+    </div>
+    {% include 'footer.html' %}
+</body>
+{%endif%    }
+</html>

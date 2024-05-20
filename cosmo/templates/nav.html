@@ -1,0 +1,38 @@
+<nav class="nav">
+    {% if user.is_authenticated %}
+        {% if user.is_staff or user.is_superuser %}
+            <ul class="nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'planlist' %}">List</a></li>
+                <li><a href="{% url 'reservationlist' %}">Reservation</a></li>
+                <li><a href="{% url 'transactionlist' %}">Payments</a></li>
+                <li><a href="{% url 'reports' %}">Dashboard</a></li>
+                <li><a href="{% url 'transactions_by_date' %}">Reports</a></li>
+                <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+            </ul>
+        {% elif user.is_staff %}
+            <ul class="nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="">Reports</a></li>
+                <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+            </ul>
+        {% else %}
+            <ul class="nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="{% url 'account' %}">Profile</a></li>
+                <li><a href="{% url 'plan' %}">Life Plans</a></li>
+                <li><a href="{% url 'userresdips' %}">Booking History</a></li>
+                <li><a href="{% url 'paymenthistory' %}">Payment History</a></li>
+                <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+            </ul>
+        {% endif %}
+    {% else %}
+        <ul class="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="{% url 'plan' %}">Life Plans</a></li>
+            <li><a href="{% url 'account_login' %}">Sign in</a></li>
+        </ul>
+    {% endif %}
+</nav>

@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>   
+<html lang="en">
+
+{% include 'header.html'%}
+
+<body>
+    <div class="mainlogo">
+        <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+      </div>
+    {% include 'nav.html'%}
+    <div class="hole">
+        <form method="post" action="{% url 'display_payment' booking.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="booking">Reservation ID:</label>
+                <input type="text" id="booking" name="booking" value="{{ booking.id }}" readonly>
+            </div>
+        
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="date" class="form-control" placeholder="YYYY-MM-DD" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="payment_method">Mode of payment:</label>
+                <input type="text" id="payment_method" name="payment_method" value="{{ booking.mop }}" readonly>
+            </div>
+        
+            <div class="form-group">
+                <label for="total">Total:</label>
+                <input type="text" id="total" name="total" value="₱{{ total_price }}" readonly>
+            </div>
+            
+            <!-- Update the amount paid field -->
+            <div class="form-group">
+                <label for="amount">Amount Payable:</label>
+                <input type="text" step="0.01" name="amount" value="₱{{ total_price }}" readonly>
+            </div>
+            
+        
+            <div class="form-group">
+                <input type="submit" value="Proceed to Payment">
+            </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get today's date in YYYY-MM-DD format
+            const today = new Date().toISOString().split('T')[0];
+            
+            // Set the value of the date input field to today's date
+            document.getElementById('date').value = today;
+        });
+    </script>
+  </div>
+  {% include 'footer.html' %}
+</body>
+</html>

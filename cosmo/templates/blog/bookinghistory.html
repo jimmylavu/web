@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>   
+<html lang="en">
+
+{% include 'header.html'%}
+
+<body>
+    <div class="mainlogo">
+        <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+      </div>
+    {% include 'nav.html'%}
+    <div class="funeral">
+        <h1>Reservations</h1>
+    </div>
+   <div class="table-design">
+    <table>
+            <tr>
+                <th>Mode of Payment </th>
+                <th>User Name</th>
+                <th>Plan</th>
+                <th>Total</th>
+
+            </tr>
+            {% for booking in booking %}
+            <tr>
+                <td>{{ booking.mop }}</td>
+                <td>{{ booking.user }}</td>
+                <td>{{ booking.plan.name }}</td>
+                <td>{{ booking.total }}</td>
+                
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

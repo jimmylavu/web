@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    {% include 'header.html' %}
+    {% if user.is_authenticated and user.is_staff %}
+    <style>
+        .table-container {
+            width: 80%;
+            max-height: 500px; /* Set the maximum height for scrolling */
+            overflow: auto; /* Enable scrolling */
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 90px auto;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #273268;;
+            color: #fff;
+            font-weight: bold;
+        }
+        td {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainlogo">
+        <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+      </div>
+      {% include 'nav.html' %}
+      <div class="funeral">
+        <h1>Transactions</h1>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Paypal Reference Number</th>
+                    <th>Amount</th> 
+                    <th>User</th>
+                    <th>Plan</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in todos %}
+                <tr>
+                    <td>{{ todo.title }}</td>
+                    <td>₱{{ todo.amount }}</td>
+                    <td>{{ todo.booking.user.username }}</td>
+                    <td>{{ todo.booking.plan.name }}</td>
+                    <td>{{ todo.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include 'footer.html' %}
+</body>
+{%endif%}
+</html>

@@ -1,0 +1,40 @@
+{% load static %}
+<!doctype html>
+<html>
+
+ {% include 'header.html'%}
+
+<body>
+    <div class="mainlogo">
+        <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+      </div>
+      {% include 'nav.html' %}
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" class="update-form">
+            {% csrf_token %}
+            <div class="funeral">
+                <h1>Update Plans</h1>
+            </div>
+            <div class="form-group">
+                <label for="id_title">Name:</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="id_content">Price:</label>
+                {{ form.price }}
+            </div>
+            <div class="form-group">
+                <label for="id_content">Description:</label>
+                {{ form.description }}
+            </div>
+            <div class="form-group">
+                <label for="id_image">Image:</label>
+                {{ form.img }}
+            </div>
+            <button type="submit" class="btn-submit">Submit Update</button>
+        </form>
+    </div>
+    {% include 'footer.html' %}
+</body>
+
+</html>

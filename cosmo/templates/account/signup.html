@@ -1,0 +1,55 @@
+{% load static %}
+{% load socialaccount %}
+{% block content %}
+<!doctype html>
+
+{% include 'header.html'%}
+
+<div class="mainlogo">
+    <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+  </div>
+{% include 'nav.html' %}
+<div class="gincontainer ">
+        <p>If you have not created an account yet, then please
+             <a class="text-blue-600" href="{{ login_url }}">sign in.</a>
+        </p>
+    <div class="logcontainer">
+        <h1 class=" "> <span class="">Create Your Account</span>
+        </h1>
+
+        <form action="{% url 'account_signup' %}" method="POST" class="">
+            <div class="">
+                {% csrf_token %}
+                <div class="">
+                  {{ form.username }}
+                </div>
+                <div class="firstname">
+                  {{ form.firstname }}
+                </div> <div class="lastname">
+                  {{ form.lastname }}
+                </div>
+                <div class="email">
+                  {{ form.email }}
+                </div>
+
+                <div class="">
+                  {{ form.password1 }}
+              </div>
+
+              <div class="">
+                {{ form.password2 }}
+            </div>
+
+            {% if redirect_field_value %}
+            <input type="text" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <button type="submit" class=" bg-blue-700 text-white rounded-lg w-[100%] my-3 p-2">Submit</button>
+
+
+        </form>
+    </div>
+    
+</div>
+{% include 'footer.html' %}
+{%endblock%}
+

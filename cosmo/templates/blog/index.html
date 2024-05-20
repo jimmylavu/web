@@ -1,0 +1,98 @@
+{% load static %}
+<!doctype html>
+<html>
+
+ {% include 'header.html'%}
+
+<body>
+  
+  {% if user.is_authenticated and user.is_staff %}
+  <div class="mainlogo">
+    <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+  </div>
+  {% include 'nav.html' %}
+<div class="">
+    <div class="banner">
+      <h1 class="heading1">Welcome, {{ user.get_username }}</h1>
+      <a href="{% url 'reports' %}"><button class="btnnn">DASHBOARD</button></a>
+      <!--<img class="bannerimg" src="banner.jpg" alt="banner">-->
+    </div>
+</div>
+  {% include 'footer.html' %}
+  {%else%}
+  <div class="mainlogo">
+    <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+  </div>
+      {% include 'nav.html' %}
+<div class="">
+  <div class="banner">
+    <h1 class="heading1"> Welcome {{ user.get_username }} to Cosmopolitan - Your Funeral Partner! </h1>
+    <a href="{% url 'plan' %}t">
+      <button class="btnnn">Avail Now!</button>
+  </a>
+  
+  <!--<img class="bannerimg" src="banner.jpg" alt="banner">-->
+  </div>
+  <section class="about" id="about">
+    <div class="about-img">
+        <img src="https://ik.imagekit.io/2dhtdmfmab/11165073_10203472865937079_8914488434117053595_o.jpg?updatedAt=1716185377819" alt="Cosmopolitan Funeral Homes">
+    </div>
+    <div class="about-text">
+        <span>About Us</span>
+        <h2>Compassionate and Professional Funeral Services</h2>
+        <p>At Cosmopolitan Funeral Homes, we understand that losing a loved one is a challenging time. Our dedicated team provides compassionate support and professional services to help you honor and remember your loved ones in a dignified manner. Located in the heart of the community, we offer a peaceful and respectful environment for all your funeral needs.</p>
+        <h3>Our Services</h3>
+        <p>We offer a wide range of funeral services to cater to the diverse needs and preferences of our clients, including:</p>
+        <ul>
+            <li>Traditional Funerals</li>
+            <li>Memorial Services</li>
+            <li>Cremation Services</li>
+            <li>Grief Support and Counseling</li>
+            <li>Pre-Planning and Pre-Arrangement Services</li>
+        </ul>
+        <h3>Why Choose Us?</h3>
+        <p>Cosmopolitan Funeral Homes is committed to providing exceptional service and support during one of life's most difficult moments. Here are some reasons to choose us:</p>
+        <ul>
+            <li><strong>Compassionate Care:</strong> Our staff is trained to provide empathetic and respectful service, ensuring your needs are met with sensitivity and understanding.</li>
+            <li><strong>Professional Excellence:</strong> We maintain the highest standards of professionalism and quality in all our services.</li>
+            <li><strong>Customized Services:</strong> We offer personalized funeral services that reflect the unique life and personality of your loved one.</li>
+            <li><strong>Community Trust:</strong> With years of experience, we have built a reputation for reliability and trust within our community.</li>
+        </ul>
+        <h3>Contact Us</h3>
+        <p>If you have any questions or need assistance, please don't hesitate to reach out to us. We are here to help you through this difficult time.</p>
+        <a href="#" class="btn" onclick="openPopup()">Learn More</a>
+    </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+    function openPopup() {
+        alert("For more information, please contact us at info@cosmopolitanfuneralhomes.com or call us at (123) 456-7890.");
+    }
+</script>
+<section class="ad-section" id="advertisement">
+  <div class="ad-text">
+    <h2>Compassionate and Professional Funeral Services</h2>
+    <p>At Cosmopolitan Funeral Homes, we understand that losing a loved one is a challenging time. Our dedicated team provides compassionate support and professional services to help you honor and remember your loved ones in a dignified manner. Located in the heart of the community, we offer a peaceful and respectful environment for all your funeral needs.</p>
+    <h3>Our Services</h3>
+    <p>We offer a wide range of funeral services to cater to the diverse needs and preferences of our clients, including:</p>
+    <ul>
+        <li>Traditional Funerals</li>
+        <li>Memorial Services</li>
+        <li>Cremation Services</li>
+        <li>Grief Support and Counseling</li>
+        <li>Pre-Planning and Pre-Arrangement Services</li>
+    </ul>
+      <a href="#" class="btn" onclick="openPopup()">Contact Us Today</a>
+  </div>
+</section>
+
+ 
+</div>
+  {% include 'footer.html' %}
+  {%endif%}
+
+ 
+</body>
+
+</html>

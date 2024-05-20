@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+</head>
+<body>
+    <div class="mainlogo">
+        <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+    </div>
+    {% include 'nav.html' %}
+    <div class="container">
+        <form method="post" action="{% url 'planresev' plan.id %}" style="width: 90%; margin: 10px;">
+            {% csrf_token %}
+            <label for="user">User:</label>
+            <input type="text" id="user" name="user" value="{{ user.username }}" readonly><br>
+            <label for="plan">Plan:</label>
+            <input type="text" id="plan" name="plan" value="{{ plan.name }}" readonly><br>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" value="₱{{ plan.price }}" readonly><br>
+            <div class="form-group">
+                <label for="mop">Mode of Payment:</label>
+                <select id="mop" name="mop">
+                    <option value="annually">Annually</option>
+                    <option value="semi-annually">Semi-Annually</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="spot">Spot on Cash</option>
+                </select>
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        function updateAmount() {
+            var planSelect = document.getElementById("plan");
+            var selectedPlan = planSelect.options[planSelect.selectedIndex].value;
+
+            var amountInput = document.getElementById("amount");
+            if (selectedPlan === "annually") {
+                amountInput.value = "{{ plan.price }}";  // Set the amount to the plan price
+            } else if (selectedPlan === "semi-annually") {
+                amountInput.value = "{{ semi_annual_price }}";  // Set the pre-calculated semi-annual price
+            } else if (selectedPlan === "quarterly") {
+                amountInput.value = "{{ quarterly_price }}";  // Set the pre-calculated quarterly price
+            } else if (selectedPlan === "monthly") {
+                amountInput.value = "{{ monthly_price }}";  // Set the pre-calculated monthly price
+            } else if (selectedPlan === "spot") {
+                amountInput.value = "";  // Set the amount to an empty value for spot cash
+            }
+        }
+    </script>
+</body>
+<style>
+    .container {
+        width: 50%;
+        margin: 100px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"] {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    input[type="submit"] {
+        background-color: #273268;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    input[type="submit"]:hover {
+        background-color: #273268;
+    }
+</style>
+</html>

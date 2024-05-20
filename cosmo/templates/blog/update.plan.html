@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update List</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  {% if user.is_authenticated and user.is_staff %}
+</head>
+
+<body>
+    <div class="back">
+        <a href="/" >Home</a>
+    </div>
+  <div class="whole">
+    <h1>Update List</h1>
+
+    <div class="hole">
+      <form action="/planlist/update/update.plan/{{ plan.id }}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <label for="image">Image:</label><br>
+        <img src="{{ plan.img.url }}" alt="Current Image">
+        <input type="file" id="new_image" name="new_image">
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="lastname" name="lastname" value="{{ plan.name }}"><br><br>
+
+        <label for="price">Price:</label><br>
+        <input type="number" id="course" name="course" value="₱{{ plan.price }}"><br><br>
+
+        <label for="description">Description:</label><br>
+        <input type="text" id="course" name="course" value="{{ plan.description }}"><br><br>
+
+
+        <div class="re">
+            <input type="submit" value="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+  {% include 'footer.html' %}
+</body>
+{%endif%}
+</html>

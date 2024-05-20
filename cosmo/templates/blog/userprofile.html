@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ {% include 'header.html'%}
+<body>
+    <div class="mainlogo">
+        <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+      </div>
+    {% include 'nav.html' %}
+    <div class="funeral">
+        <h1>User Profile</h1>
+    </div>
+    <div class="account_container">
+        {% csrf_token %}
+        <div class="left">
+            <div class="card-container">
+                <div class="prof">
+                    <p>Username: {{ user.username }}</p>
+                </div>
+                <div class="prof">
+                    <p>Email: {{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+        <form action="{% url 'update_account' user.id %}"  method="post">
+        {% csrf_token %}
+        <div class="right">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+                    <div class="fields">
+                    <div class="input-field1">
+                        <label>First Name</label>
+                        <input type="text" name="firstname" value="{% if user_account %}{{ user_account.firstname }}{% endif %}" placeholder="Enter first name"required>
+                    </div>
+                    <div class="input-field1">
+                        <label>Last Name</label>
+                        <input type="text" name="lastname" value="{% if user_account %}{{ user_account.lastname }}{% endif %}" placeholder="Enter last name" required>
+                    </div>
+                    <div class="input-field1">
+                        <label>Mobile Number</label>
+                        <input type="text" name="contact" value="{% if user_account %}{{ user_account.contact }}{% endif %}" placeholder="Enter mobile number" required>
+                    </div>
+                    <div class="input-field1">
+                        <label>Address</label>
+                        <input type="text" name="address" value="{% if user_account %}{{ user_account.address }}{% endif %}" placeholder="Enter address" required>
+                    </div>
+                    <div class="input-field1">
+                        <label>Birthday</label>
+                        <input type="text" name="birthday" value="{% if user_account %}{{ user_account.birthday }}{% endif %}" placeholder="Enter birthdate" required>
+                    </div>
+                    <div class="input-field1">
+                    </div>
+                    </div>        
+                    <button class="sumbit">
+                        <span class="btnText">Submit</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

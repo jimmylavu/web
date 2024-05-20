@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ {% include 'header.html'%}
+<body>
+    <div class="mainlogo">
+        <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+      </div>
+    {% include 'nav.html' %}
+    <div class="funeral">
+        <h1>Funeral Plans</h1>
+    </div>
+    <div class="width75 margin-top">
+        <div class="flex-4">
+            {% for x in plan %}
+            <div class="flex-4-item">
+                <div class="img-container">
+                    <a href="reservation/{{x.id}}" class="text-decoration-none">
+                        <img src="{{ x.img.url }}" alt="{{ x.title }}">
+                    </a>
+                </div>
+                <div class="padding-1em">
+                    <h5>₱{{ x.price }}.00</h5>
+                    <p>{{ x.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

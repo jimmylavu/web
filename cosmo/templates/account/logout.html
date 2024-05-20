@@ -1,0 +1,23 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<div class="signout-container">
+    <div class="signout-form-container">
+        <h1>Sign Out</h1>
+        <p>Are you sure you want to sign out?</p>
+        
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            <div>
+                <button type="submit">Sign Out</button>
+            </div>
+        </form>
+        
+        <div>
+            <button class="cancel-button"><a href="/">Cancel</a></button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

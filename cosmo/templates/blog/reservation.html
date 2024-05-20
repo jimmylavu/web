@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{%include 'header.html' %}
+<body>
+    <div class="mainlogo">
+        <img class="" src="https://ik.imagekit.io/2dhtdmfmab/Cosmopolitan-Memorial-Chapel_logo.png?updatedAt=1714402785265" alt="argus logo">
+    </div>
+  {% include 'nav.html' %}
+        <div class="plan-container">
+            <div class="funeral">
+                <h1>Funeral Plans</h1>
+            </div>
+            <div class="planed">
+                    <div class="pic">
+                        <h1 class="plan-name">{{ plan.name }}</h1>
+                        <h1 class="plan-name">₱{{ plan.price }}.00</h1>
+                        <div class="plan-benefits">
+                            <h2>PLAN BENEFITS</h2>
+                            <div class="benefits-list">
+                                <p><strong>1. Memorial Service:</strong> If you avail of this plan, you or your beneficiaries will be entitled to a memorial service from our accredited mortuary for a chapel viewing of four (4) days or for viewing outside of our accredited mortuary, at your or your beneficiary's expense, for nine (9) days. The memorial service may only be availed 30 days after the date of effectivity of the plan.</p>
+                                
+                                <p><strong>2. Casket Provision:</strong> A provision for a casket depending on the purchased plan.</p>
+                                
+                                <p><strong>3. Insurance Coverages:</strong> The following insurance coverages apply if you are in good health and between the insurable ages of 18 to 60 years (not beyond your 60th birthday) at the time of purchase:
+                                    <ul>
+                                        <li><strong>Cash Assistance:</strong> Your beneficiaries shall receive an amount equivalent to the Gross Contract Price if you die within 10 years from the date of effectivity of the plan and you have not reached the age of 65 upon death.</li>
+                                        <li><strong>Payment of Unpaid Balance:</strong> The unpaid balance of your plan will be considered fully paid if you die while paying for this plan and you have not reached the age of 65 upon death.</li>
+                                        <li><strong>Waiver of Installment:</strong> You will be exempted from paying the balance of your plan if you suffer from an uninterrupted disability of at least six (6) months during the paying period and you have not reached the age of 60 at the start of your disability.</li>
+                                        <li><strong>Accidental Death and Dismemberment Coverage:</strong> If you are in good health and between the insurable ages of 18 to 55 years (not beyond your 55th birthday) at the time of purchase, you or your beneficiaries shall be entitled to cash, based on a schedule, if you die or become dismembered due to an accident during the paying period and you have not reached the age of 60 upon death/accident.</li>
+                                        <li><strong>Memorial Service Cash:</strong> You or your heirs, successors, or assigns will be entitled to cash if the memorial service is not performed or if they opt to retain the plan.</li>
+                                        <li><strong>Cash Surrender Value:</strong> Cash if you surrender your plan while in-force. You will no longer be entitled to any benefit upon surrender of your plan.</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-benefits">
+                            <h2>PLAN FEATURES</h2>
+                            <div class="benefits-list">
+                                <p><strong></strong>The following features are available for this plan:</p>
+                                        <li><strong>Transferability:</strong> You may transfer your plan to another living person.</li>
+                                        <li><strong>Assignability:</strong> You may assign the plan to any deceased person, however, any insurance coverage provided to the transferor shall automatically terminate, provided that the balance, if any, is paid before the service is rendered.</li>
+                                        <li><strong>Free Look Period:</strong>You may cancel the plan within 15 days from the date of effectivity of the plan and you will receive a refund of your payment in full.</li>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="disc">
+                        <div class="sia">
+                            <img src="{{ plan.img.url }}" alt="coffin">
+                        </div>
+                        <div class="payment-options-container">
+                            <strong>Pay the following installments for 5 years:</strong>
+                            <div class="payment-options-table">
+                                <table>
+                                    <tr>
+                                        <td>Annually (1 payment per year)</td>
+                                        <td>₱{{ annually }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Semi-Annually (2 payments per year)</td>
+                                        <td>₱{{ semi_annually }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quarterly (4 payments per year)</td>
+                                        <td>₱{{ quarterly }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Monthly (12 payments per year)</td>
+                                        <td>₱{{ monthly }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="plan">
+                            <h1 class="plan-price">Price: ₱{{ plan.price }}.00</h1>
+                            <p class="plan-description">{{ plan.description }}</p>
+                            <form action="payment/{{ plan.id }}">
+                            <button type="submit" class="reserve-button">Reserve</button>
+                            </form>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+</body>
+
+</html>
